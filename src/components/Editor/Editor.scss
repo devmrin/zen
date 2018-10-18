@@ -1,26 +1,45 @@
+.editor__background {
+  height: 100vh;
+  background: #1e1e1e;
+  transition: background 0.2s ease-in;
+  &--light {
+    background: #f9f9f9;
+  }
+}
+
 .editor__header,
 .editor__body {
   width: 100%;
   border: none;
   resize: none;
-  background: rgb(30, 30, 30);
+  background: #1e1e1e;
   outline-color: #cccccc;
   outline-width: 0.5px;
   outline: none;
+  &--light {
+    background: #f9f9f9;
+  }
 }
 
 .editor__header {
   color: #cccccc;
-  font-size: 2em;
+  font-size: 3em;
   margin-block-start: 0.27em;
   margin-block-end: 0.27em;
   font-weight: bold;
+  transition: color 0.2s ease-in, background 0.2s ease-in;
   &--light {
-    font-size: 3em;
+    color: #1e1e1e;
   }
 }
 
 .editor__body {
   color: #c6c6c6;
   font-size: 1.2em;
+  margin-block-start: 0.5em;
+  margin-block-end: 0.5em;
+  transition: color 0.2s ease-in, background 0.2s ease-in;
+  &--light {
+    color: #1e1e1e;
+  }
 }

@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
 import Textarea from 'react-textarea-autosize';
+import { EditorToolbar } from '../index';
 import styled from 'styled-components';
 import './Editor.scss';
-
-const Background = styled.div`
-  height: 100vh;
-  background: #1e1e1e;
-`;
 
 const EditorWrapper = styled.div`
   width: 60%;
@@ -15,16 +11,38 @@ const EditorWrapper = styled.div`
 `;
 
 class Editor extends Component {
+  state = {
+    light: false
+  };
+
+  componentDidMount() {
+    this.textarea.focus();
+  }
+
+  toggleLightMode = () => {
+    this.setState({
+      light: !this.state.light
+    });
+  };
+
   render() {
-    let { light } = this.props;
+    let { light } = this.state;
     return (
-      <Background>
+      <div
+        className={
+          light
+            ? 'editor__background editor__background--light'
+            : 'editor__background'
+        }
+      >
+        <EditorToolbar light={light} toggleLightMode={this.toggleLightMode} />
         <EditorWrapper>
           <Textarea
             className={
               light ? 'editor__header editor__header--light' : 'editor__header'
             }
-            placeholder="Title..."
+            placeholder="Title"
+            inputRef={ref => (this.textarea = ref)}
           />
           <br />
           <Textarea
@@ -34,7 +52,7 @@ class Editor extends Component {
             placeholder="Write something..."
           />
         </EditorWrapper>
-      </Background>
+      </div>
     );
   }
 }
