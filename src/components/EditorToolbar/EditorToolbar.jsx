@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import './EditorToolbar.scss';
 export default class EditorToolbar extends Component {
   render() {
     let { light, toggleLightMode } = this.props;
@@ -11,7 +11,16 @@ export default class EditorToolbar extends Component {
             : 'editor-toolbar__wrapper'
         }
       >
-        <button onClick={toggleLightMode}>Light/Dark</button>
+        <button
+          onClick={toggleLightMode}
+          className={
+            light
+              ? 'editor-toolbar__button editor-toolbar__button--light'
+              : 'editor-toolbar__button'
+          }
+        >
+          {light ? 'L' : 'D'}
+        </button>
       </div>
     );
   }

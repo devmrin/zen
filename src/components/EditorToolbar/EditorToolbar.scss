@@ -1,4 +1,18 @@
 .editor-toolbar__wrapper {
   position: absolute;
-  background: lightcoral;
+  top: 10px;
+  left: 10px;
+}
+
+.editor-toolbar__button {
+  border: none;
+  cursor: pointer;
+  padding: 5px 10px;
+  background: #7b7b7b;
+  border-radius: 20px;
+  color: #1e1e1e;
+  outline: none;
+  &--light {
+    color: #f9f9f9;
+  }
 }
