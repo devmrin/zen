@@ -3,7 +3,7 @@ import './EditorToolbar.scss';
 import { DWDark, DWLight, FSDark, FSLight } from '../../assets';
 export default class EditorToolbar extends Component {
   render() {
-    let { light, toggleFullScreen, toggleLightMode } = this.props;
+    let { light, toggleFullScreen, toggleLightMode, saveFile } = this.props;
     return (
       <div
         className={
@@ -37,6 +37,7 @@ export default class EditorToolbar extends Component {
           />
         </button>
         <button
+          onClick={saveFile}
           className={
             light
               ? 'editor-toolbar__button editor-toolbar__button--light'

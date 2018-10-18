@@ -1,11 +1,10 @@
 .editor-toolbar__wrapper {
   position: fixed;
-  width: 5vw;
   top: 7vh;
   left: 10px;
   display: flex;
   flex-direction: column;
-  opacity: 0.2;
+  opacity: 0.15;
   transition: opacity 0.2s ease-in;
   &:hover {
     opacity: 1;

@@ -33,6 +33,27 @@ class Editor extends Component {
     });
   };
 
+  saveFile = () => {
+    if (this.header.value.length || this.body.value.length) {
+      var element = document.createElement('a');
+      var file = new Blob(
+        [
+          this.header.value,
+          '\r\n--------------------\r\n \r\n',
+          this.body.value
+        ],
+        {
+          type: 'text/plain'
+        }
+      );
+      element.href = URL.createObjectURL(file);
+      element.download = 'OnePost.txt';
+      element.click();
+    } else {
+      console.log('No content to download.');
+    }
+  };
+
   handleHeader = event => {
     if (event.key === 'Enter') {
       event.preventDefault();
@@ -55,6 +76,7 @@ class Editor extends Component {
           light={light}
           toggleLightMode={this.toggleLightMode}
           toggleFullScreen={this.toggleFullScreen}
+          saveFile={this.saveFile}
         />
         <EditorWrapper>
           <Textarea
