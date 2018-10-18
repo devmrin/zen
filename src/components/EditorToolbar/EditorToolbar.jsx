@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './EditorToolbar.scss';
-import { FSLight, FSDark } from '../../assets';
+import { DWDark, DWLight, FSDark, FSLight } from '../../assets';
 export default class EditorToolbar extends Component {
   render() {
     let { light, toggleFullScreen, toggleLightMode } = this.props;
@@ -34,6 +34,19 @@ export default class EditorToolbar extends Component {
             className="editor-toolbar__icon"
             src={light ? FSLight : FSDark}
             alt="fulllscreen"
+          />
+        </button>
+        <button
+          className={
+            light
+              ? 'editor-toolbar__button editor-toolbar__button--light'
+              : 'editor-toolbar__button'
+          }
+        >
+          <img
+            className="editor-toolbar__icon"
+            src={light ? DWLight : DWDark}
+            alt="download"
           />
         </button>
       </div>
