@@ -16,12 +16,23 @@ const EditorWrapper = styled.div`
 
 class Editor extends Component {
   render() {
+    let { light } = this.props;
     return (
       <Background>
         <EditorWrapper>
-          <Textarea className="editor__header" defaultValue="This is title" />
+          <Textarea
+            className={
+              light ? 'editor__header editor__header--light' : 'editor__header'
+            }
+            defaultValue="This is an editable title"
+          />
           <br />
-          <Textarea className="editor__body" defaultValue="This is body" />
+          <Textarea
+            className={
+              light ? 'editor__body editor__body--light' : 'editor__body'
+            }
+            defaultValue="This is an editable body"
+          />
         </EditorWrapper>
       </Background>
     );
