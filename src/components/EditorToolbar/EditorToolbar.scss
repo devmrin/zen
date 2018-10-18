@@ -12,7 +12,14 @@
   border-radius: 20px;
   color: #1e1e1e;
   outline: none;
+  transition: background 0.2s ease-in;
+  &:hover {
+    background: #ccc;
+  }
   &--light {
     color: #f9f9f9;
+    &:hover {
+      background: #1e1e1e;
+    }
   }
 }
