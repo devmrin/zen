@@ -16,13 +16,20 @@ class Editor extends Component {
   };
 
   componentDidMount() {
-    this.textarea.focus();
+    this.header.focus();
   }
 
   toggleLightMode = () => {
     this.setState({
       light: !this.state.light
     });
+  };
+
+  handleHeader = event => {
+    if (event.key == 'Enter') {
+      event.preventDefault();
+      this.body.focus();
+    }
   };
 
   render() {
@@ -42,7 +49,8 @@ class Editor extends Component {
               light ? 'editor__header editor__header--light' : 'editor__header'
             }
             placeholder="Title"
-            inputRef={ref => (this.textarea = ref)}
+            inputRef={ref => (this.header = ref)}
+            onKeyPress={this.handleHeader}
           />
           <br />
           <Textarea
@@ -50,6 +58,7 @@ class Editor extends Component {
               light ? 'editor__body editor__body--light' : 'editor__body'
             }
             placeholder="Write something..."
+            inputRef={ref => (this.body = ref)}
           />
         </EditorWrapper>
       </div>
