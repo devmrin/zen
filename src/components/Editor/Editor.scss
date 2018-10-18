@@ -6,6 +6,7 @@
   background: rgb(30, 30, 30);
   outline-color: #cccccc;
   outline-width: 0.5px;
+  outline: none;
 }
 
 .editor__header {
@@ -16,8 +17,12 @@
   margin-inline-start: 0px;
   margin-inline-end: 0px;
   font-weight: bold;
+  &--light {
+    font-size: 3em;
+  }
 }
 
 .editor__body {
   color: #c6c6c6;
+  font-size: 1.2em;
 }

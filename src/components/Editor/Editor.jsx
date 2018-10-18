@@ -24,14 +24,14 @@ class Editor extends Component {
             className={
               light ? 'editor__header editor__header--light' : 'editor__header'
             }
-            defaultValue="This is an editable title"
+            placeholder="Title..."
           />
           <br />
           <Textarea
             className={
               light ? 'editor__body editor__body--light' : 'editor__body'
             }
-            defaultValue="This is an editable body"
+            placeholder="Write something..."
           />
         </EditorWrapper>
       </Background>
