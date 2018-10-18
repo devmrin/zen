@@ -1,7 +1,8 @@
 .editor__background {
-  height: 100vh;
+  min-height: 100vh;
   background: #1e1e1e;
   transition: background 0.2s ease-in;
+  overflow-y: scroll;
   &--light {
     background: #f9f9f9;
   }
@@ -23,7 +24,7 @@
 
 .editor__header {
   color: #cccccc;
-  font-size: 3em;
+  font-size: 2.5em;
   margin-block-start: 0.27em;
   margin-block-end: 0.27em;
   font-weight: bold;
@@ -36,8 +37,6 @@
 .editor__body {
   color: #c6c6c6;
   font-size: 1.2em;
-  margin-block-start: 0.5em;
-  margin-block-end: 0.5em;
   transition: color 0.2s ease-in, background 0.2s ease-in;
   &--light {
     color: #1e1e1e;

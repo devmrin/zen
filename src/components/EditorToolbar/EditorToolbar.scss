@@ -1,13 +1,26 @@
 .editor-toolbar__wrapper {
-  position: absolute;
-  top: 10px;
+  position: fixed;
+  width: 5vw;
+  top: 7vh;
   left: 10px;
+  display: flex;
+  flex-direction: column;
+  opacity: 0.2;
+  transition: opacity 0.2s ease-in;
+  &:hover {
+    opacity: 1;
+  }
 }
 
 .editor-toolbar__button {
   border: none;
+  margin-bottom: 10px;
   cursor: pointer;
-  padding: 5px 10px;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: #7b7b7b;
   border-radius: 20px;
   color: #1e1e1e;
@@ -22,4 +35,8 @@
       background: #1e1e1e;
     }
   }
+}
+
+.editor-toolbar__icon {
+  height: 13px;
 }

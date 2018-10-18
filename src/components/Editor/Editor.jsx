@@ -19,6 +19,14 @@ class Editor extends Component {
     this.header.focus();
   }
 
+  toggleFullScreen = () => {
+    if (document.webkitFullscreenElement) {
+      document.webkitCancelFullScreen();
+    } else {
+      this.editor.webkitRequestFullScreen();
+    }
+  };
+
   toggleLightMode = () => {
     this.setState({
       light: !this.state.light
@@ -26,7 +34,7 @@ class Editor extends Component {
   };
 
   handleHeader = event => {
-    if (event.key == 'Enter') {
+    if (event.key === 'Enter') {
       event.preventDefault();
       this.body.focus();
     }
@@ -36,13 +44,18 @@ class Editor extends Component {
     let { light } = this.state;
     return (
       <div
+        ref={ref => (this.editor = ref)}
         className={
           light
             ? 'editor__background editor__background--light'
             : 'editor__background'
         }
       >
-        <EditorToolbar light={light} toggleLightMode={this.toggleLightMode} />
+        <EditorToolbar
+          light={light}
+          toggleLightMode={this.toggleLightMode}
+          toggleFullScreen={this.toggleFullScreen}
+        />
         <EditorWrapper>
           <Textarea
             className={
