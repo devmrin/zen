@@ -19,6 +19,11 @@ class Editor extends Component {
   };
 
   componentWillMount() {
+    if (JSON.parse(localStorage.getItem('light'))) {
+      this.setState({ light: JSON.parse(localStorage.getItem('light')) });
+    } else {
+      this.setState({ light: JSON.parse(localStorage.getItem('light')) });
+    }
     if (localStorage.getItem('headerText')) {
       this.setState({ headerText: localStorage.getItem('headerText') });
     }
@@ -40,14 +45,10 @@ class Editor extends Component {
   };
 
   toggleLightMode = () => {
-    this.setState(
-      {
-        light: !this.state.light
-      },
-      () => {
-        localStorage.setItem('light', this.state.light);
-      }
-    );
+    this.setState(prevState => {
+      localStorage.setItem('light', JSON.stringify(!prevState.light));
+      return { light: !prevState.light };
+    });
   };
 
   saveFile = () => {
