@@ -33,6 +33,9 @@ class Editor extends Component {
   }
 
   componentDidMount() {
+    console.log(
+      'Checking under the hood? 🧐 This project is open-sourced on GitHub. ()'
+    );
     if (this.state.bodyText) {
       this.body.focus();
     } else {
