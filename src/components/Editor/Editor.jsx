@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Textarea from 'react-textarea-autosize';
 import { EditorToolbar } from '../index';
+import { returnTitle } from '../../utils';
 import styled from 'styled-components';
 import './Editor.scss';
 
@@ -47,7 +48,7 @@ class Editor extends Component {
         }
       );
       element.href = URL.createObjectURL(file);
-      element.download = 'OnePost.txt';
+      element.download = returnTitle(this.header.value);
       element.click();
     } else {
       console.log('No content to download.');
