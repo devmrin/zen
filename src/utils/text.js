@@ -1,10 +1,6 @@
 export const returnTitle = text => {
   if (text) {
-    if (text.split(' ')[1]) {
-      return `${text.split(' ')[0]}-Zen`;
-    } else {
-      return `${text.split(' ')[0]}-Zen`;
-    }
+    return `${text.split(' ')[0]}-Zen`;
   } else return `Zen`;
 };
 
