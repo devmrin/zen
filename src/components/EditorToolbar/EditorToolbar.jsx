@@ -88,6 +88,7 @@ export default class EditorToolbar extends Component {
         <ReactTooltip
           className="editor-toolbar__tooltip"
           place="right"
+          delayShow={100}
           type={light ? 'dark' : 'light'}
           effect="solid"
           offset={{ top: 4 }}
