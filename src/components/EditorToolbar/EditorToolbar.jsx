@@ -28,7 +28,15 @@ export default class EditorToolbar extends Component {
                 : 'editor-toolbar__button'
             }
           >
-            <span className="editor-toolbar__word-count">
+            <span
+              className={
+                returnCount(bodyText) < 100
+                  ? 'editor-toolbar__word-count'
+                  : returnCount(bodyText) < 1000
+                    ? 'editor-toolbar__word-count--md'
+                    : 'editor-toolbar__word-count--sm'
+              }
+            >
               {returnCount(bodyText)}
             </span>
           </button>

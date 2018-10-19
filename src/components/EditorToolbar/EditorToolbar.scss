@@ -39,6 +39,12 @@
 .editor-toolbar__word-count {
   display: flex;
   font-size: 0.7em;
+  &--md {
+    font-size: 0.5em;
+  }
+  &--sm {
+    font-size: 0.7em;
+  }
 }
 
 .editor-toolbar__icon {
