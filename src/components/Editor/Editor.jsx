@@ -33,7 +33,11 @@ class Editor extends Component {
   }
 
   componentDidMount() {
-    this.header.focus();
+    if (this.state.bodyText) {
+      this.body.focus();
+    } else {
+      this.header.focus();
+    }
   }
 
   toggleFullScreen = () => {
