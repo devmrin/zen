@@ -36,6 +36,11 @@
   }
 }
 
+.editor-toolbar__word-count {
+  display: flex;
+  font-size: 0.7em;
+}
+
 .editor-toolbar__icon {
   height: 13px;
 }

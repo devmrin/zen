@@ -7,3 +7,10 @@ export const returnTitle = text => {
     }
   } else return `Zen`;
 };
+
+export const returnCount = text => {
+  if (text.split(' ').length === 1) {
+    return text.trim().split(/\s+/).length - 1;
+  }
+  return text.trim().split(/\s+/).length;
+};

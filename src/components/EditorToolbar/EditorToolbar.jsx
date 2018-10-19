@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
 import './EditorToolbar.scss';
 import { DWDark, DWLight, FSDark, FSLight } from '../../assets';
+import { returnCount } from '../../utils/text';
 import ReactTooltip from 'react-tooltip';
 export default class EditorToolbar extends Component {
   render() {
-    let { light, toggleFullScreen, toggleLightMode, saveFile } = this.props;
+    let {
+      light,
+      toggleFullScreen,
+      toggleLightMode,
+      saveFile,
+      bodyText
+    } = this.props;
     return (
       <div
         className={
@@ -13,6 +20,19 @@ export default class EditorToolbar extends Component {
             : 'editor-toolbar__wrapper'
         }
       >
+        <a href={null} data-tip="Words">
+          <button
+            className={
+              light
+                ? 'editor-toolbar__button editor-toolbar__button--light'
+                : 'editor-toolbar__button'
+            }
+          >
+            <span className="editor-toolbar__word-count">
+              {returnCount(bodyText)}
+            </span>
+          </button>
+        </a>
         <a href={null} data-tip="Theme">
           <button
             onClick={toggleLightMode}

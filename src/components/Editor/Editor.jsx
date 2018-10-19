@@ -114,6 +114,7 @@ class Editor extends Component {
           toggleLightMode={this.toggleLightMode}
           toggleFullScreen={this.toggleFullScreen}
           saveFile={this.saveFile}
+          bodyText={this.state.bodyText}
         />
         <EditorWrapper>
           <Textarea
