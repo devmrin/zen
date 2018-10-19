@@ -19,8 +19,11 @@ class Editor extends Component {
   };
 
   componentWillMount() {
-    if (localStorage.getItem('light')) {
-      this.setState({ light: localStorage.getItem('light') });
+    if (localStorage.getItem('headerText')) {
+      this.setState({ headerText: localStorage.getItem('headerText') });
+    }
+    if (localStorage.getItem('bodyText')) {
+      this.setState({ bodyText: localStorage.getItem('bodyText') });
     }
   }
 
@@ -68,15 +71,27 @@ class Editor extends Component {
     }
   };
 
-  handleHeader = event => {
+  handleHeaderReturn = event => {
     if (event.key === 'Enter') {
       event.preventDefault();
       this.body.focus();
     }
   };
 
+  handleHeader = e => {
+    this.setState({ headerText: e.target.value }, () => {
+      localStorage.setItem('headerText', this.state.headerText);
+    });
+  };
+
+  handleBody = e => {
+    this.setState({ bodyText: e.target.value }, () => {
+      localStorage.setItem('bodyText', this.state.bodyText);
+    });
+  };
+
   render() {
-    let { light } = this.state;
+    let { light, headerText, bodyText } = this.state;
     return (
       <div
         ref={ref => (this.editor = ref)}
@@ -99,7 +114,9 @@ class Editor extends Component {
             }
             placeholder="Title"
             inputRef={ref => (this.header = ref)}
-            onKeyPress={this.handleHeader}
+            onKeyPress={this.handleHeaderReturn}
+            value={headerText}
+            onChange={this.handleHeader}
           />
           <br />
           <Textarea
@@ -108,6 +125,8 @@ class Editor extends Component {
             }
             placeholder="Write something..."
             inputRef={ref => (this.body = ref)}
+            value={bodyText}
+            onChange={this.handleBody}
           />
         </EditorWrapper>
       </div>
