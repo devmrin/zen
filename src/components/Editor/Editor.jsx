@@ -117,6 +117,7 @@ class Editor extends Component {
         />
         <EditorWrapper>
           <Textarea
+            data-gramm_editor="false"
             className={
               light ? 'editor__header editor__header--light' : 'editor__header'
             }
@@ -128,6 +129,7 @@ class Editor extends Component {
           />
           <br />
           <Textarea
+            data-gramm_editor="false"
             className={
               light ? 'editor__body editor__body--light' : 'editor__body'
             }
