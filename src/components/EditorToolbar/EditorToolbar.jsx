@@ -13,7 +13,7 @@ export default class EditorToolbar extends Component {
             : 'editor-toolbar__wrapper'
         }
       >
-        <a data-tip="Theme">
+        <a href={null} data-tip="Theme">
           <button
             onClick={toggleLightMode}
             className={
@@ -25,7 +25,7 @@ export default class EditorToolbar extends Component {
             {light ? 'L' : 'D'}
           </button>
         </a>
-        <a data-tip="Fullscreen">
+        <a href={null} data-tip="Fullscreen">
           <button
             onClick={toggleFullScreen}
             className={
@@ -41,7 +41,7 @@ export default class EditorToolbar extends Component {
             />
           </button>
         </a>
-        <a data-tip="Download">
+        <a href={null} data-tip="Download">
           <button
             onClick={saveFile}
             className={

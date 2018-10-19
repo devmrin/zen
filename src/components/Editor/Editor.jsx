@@ -34,7 +34,7 @@ class Editor extends Component {
 
   componentDidMount() {
     console.log(
-      'Checking under the hood? 🧐 This project is open-sourced on GitHub. ()'
+      'Checking under the hood, eh? 🧐 This project is open-sourced on GitHub. (https://github.com/devmrin/zen) 🚀'
     );
     if (this.state.bodyText) {
       this.body.focus();
