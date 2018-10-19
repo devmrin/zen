@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Textarea from 'react-textarea-autosize';
 import { EditorToolbar } from '../index';
-import { returnTitle } from '../../utils';
+import { returnTitle } from '../../utils/text';
 import styled from 'styled-components';
 import './Editor.scss';
 
@@ -13,8 +13,16 @@ const EditorWrapper = styled.div`
 
 class Editor extends Component {
   state = {
-    light: false
+    light: false,
+    headerText: '',
+    bodyText: ''
   };
+
+  componentWillMount() {
+    if (localStorage.getItem('light')) {
+      this.setState({ light: localStorage.getItem('light') });
+    }
+  }
 
   componentDidMount() {
     this.header.focus();
@@ -29,9 +37,14 @@ class Editor extends Component {
   };
 
   toggleLightMode = () => {
-    this.setState({
-      light: !this.state.light
-    });
+    this.setState(
+      {
+        light: !this.state.light
+      },
+      () => {
+        localStorage.setItem('light', this.state.light);
+      }
+    );
   };
 
   saveFile = () => {
