@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Textarea from "react-textarea-autosize";
 import { EditorToolbar } from "../index";
-import { returnTitle } from "../../utils/text";
+import { returnReplaced, returnTitle } from "../../utils/text";
 import "./Editor.scss";
 
 class Editor extends Component {
@@ -86,7 +86,8 @@ class Editor extends Component {
   };
 
   handleBody = (e) => {
-    this.setState({ bodyText: e.target.value }, () => {
+    let currText = returnReplaced(e.target.value);
+    this.setState({ bodyText: currText }, () => {
       localStorage.setItem("bodyText", this.state.bodyText);
     });
   };
