@@ -1,40 +1,33 @@
-import React, { Component } from 'react';
-import Textarea from 'react-textarea-autosize';
-import { EditorToolbar } from '../index';
-import { returnTitle } from '../../utils/text';
-import styled from 'styled-components';
-import './Editor.scss';
-
-const EditorWrapper = styled.div`
-  width: 60%;
-  margin: 0 auto;
-  padding-top: 5vh;
-`;
+import React, { Component } from "react";
+import Textarea from "react-textarea-autosize";
+import { EditorToolbar } from "../index";
+import { returnTitle } from "../../utils/text";
+import "./Editor.scss";
 
 class Editor extends Component {
   state = {
     light: false,
-    headerText: '',
-    bodyText: ''
+    headerText: "",
+    bodyText: "",
   };
 
   componentWillMount() {
-    if (JSON.parse(localStorage.getItem('light'))) {
-      this.setState({ light: JSON.parse(localStorage.getItem('light')) });
+    if (JSON.parse(localStorage.getItem("light"))) {
+      this.setState({ light: JSON.parse(localStorage.getItem("light")) });
     } else {
-      this.setState({ light: JSON.parse(localStorage.getItem('light')) });
+      this.setState({ light: JSON.parse(localStorage.getItem("light")) });
     }
-    if (localStorage.getItem('headerText')) {
-      this.setState({ headerText: localStorage.getItem('headerText') });
+    if (localStorage.getItem("headerText")) {
+      this.setState({ headerText: localStorage.getItem("headerText") });
     }
-    if (localStorage.getItem('bodyText')) {
-      this.setState({ bodyText: localStorage.getItem('bodyText') });
+    if (localStorage.getItem("bodyText")) {
+      this.setState({ bodyText: localStorage.getItem("bodyText") });
     }
   }
 
   componentDidMount() {
     console.log(
-      'Checking under the hood, eh? 🧐 This project is open-sourced on GitHub. (https://github.com/devmrin/zen) 🚀'
+      "Checking under the hood, eh? 🧐 This project is open-sourced on GitHub. (https://github.com/devmrin/zen) 🚀"
     );
     if (this.state.bodyText) {
       this.body.focus();
@@ -52,49 +45,49 @@ class Editor extends Component {
   };
 
   toggleLightMode = () => {
-    this.setState(prevState => {
-      localStorage.setItem('light', JSON.stringify(!prevState.light));
+    this.setState((prevState) => {
+      localStorage.setItem("light", JSON.stringify(!prevState.light));
       return { light: !prevState.light };
     });
   };
 
   saveFile = () => {
     if (this.header.value.length || this.body.value.length) {
-      var element = document.createElement('a');
+      var element = document.createElement("a");
       var file = new Blob(
         [
           this.header.value,
-          '\r\n--------------------\r\n \r\n',
-          this.body.value
+          "\r\n--------------------\r\n \r\n",
+          this.body.value,
         ],
         {
-          type: 'text/plain'
+          type: "text/plain",
         }
       );
       element.href = URL.createObjectURL(file);
       element.download = returnTitle(this.header.value);
       element.click();
     } else {
-      console.log('No content to download.');
+      console.log("No content to download.");
     }
   };
 
-  handleHeaderReturn = event => {
-    if (event.key === 'Enter') {
+  handleHeaderReturn = (event) => {
+    if (event.key === "Enter") {
       event.preventDefault();
       this.body.focus();
     }
   };
 
-  handleHeader = e => {
+  handleHeader = (e) => {
     this.setState({ headerText: e.target.value }, () => {
-      localStorage.setItem('headerText', this.state.headerText);
+      localStorage.setItem("headerText", this.state.headerText);
     });
   };
 
-  handleBody = e => {
+  handleBody = (e) => {
     this.setState({ bodyText: e.target.value }, () => {
-      localStorage.setItem('bodyText', this.state.bodyText);
+      localStorage.setItem("bodyText", this.state.bodyText);
     });
   };
 
@@ -102,11 +95,11 @@ class Editor extends Component {
     let { light, headerText, bodyText } = this.state;
     return (
       <div
-        ref={ref => (this.editor = ref)}
+        ref={(ref) => (this.editor = ref)}
         className={
           light
-            ? 'editor__background editor__background--light'
-            : 'editor__background'
+            ? "editor__background editor__background--light"
+            : "editor__background"
         }
       >
         <EditorToolbar
@@ -116,14 +109,14 @@ class Editor extends Component {
           saveFile={this.saveFile}
           bodyText={this.state.bodyText}
         />
-        <EditorWrapper>
+        <div className="editor__wrapper">
           <Textarea
             data-gramm_editor="false"
             className={
-              light ? 'editor__header editor__header--light' : 'editor__header'
+              light ? "editor__header editor__header--light" : "editor__header"
             }
             placeholder="Title"
-            inputRef={ref => (this.header = ref)}
+            inputRef={(ref) => (this.header = ref)}
             onKeyPress={this.handleHeaderReturn}
             value={headerText}
             onChange={this.handleHeader}
@@ -132,14 +125,14 @@ class Editor extends Component {
           <Textarea
             data-gramm_editor="false"
             className={
-              light ? 'editor__body editor__body--light' : 'editor__body'
+              light ? "editor__body editor__body--light" : "editor__body"
             }
             placeholder="Write something..."
-            inputRef={ref => (this.body = ref)}
+            inputRef={(ref) => (this.body = ref)}
             value={bodyText}
             onChange={this.handleBody}
           />
-        </EditorWrapper>
+        </div>
       </div>
     );
   }
